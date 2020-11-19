@@ -108,3 +108,5 @@ def account():
     return render_template('account.html', title='Account', image_file=image_file,
         form=form)
 
+def function():
+    pass
