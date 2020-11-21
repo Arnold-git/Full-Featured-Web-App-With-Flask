@@ -10,7 +10,7 @@
 	      {% if post.author == current_user %}
 	      <div>
 	      	<a class="btn btn-secondary btn-sm m-1" href="{{ url_for('update_post', post_id=post.id) }}">Update</a>
-	      	<button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+	      	<button type="button" class="btn btn-danger btn-sm mt-1 md-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
 	      </div>
 	      {% endif %}
 	    </div>
@@ -23,13 +23,10 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="deleteModal">Modal title</h5>
+	        <h5 class="modal-title" id="deleteModal">Delete Post?</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
-	      </div>
-	      <div class="modal-body">
-	        ...
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
