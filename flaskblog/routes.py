@@ -174,8 +174,8 @@ def send_reset_email(user):
    msg.body = f'''To reset your password, visit the following link:
 {url_for('reset_token', token=token, _external=True)}
 
-If you did not make this request then simply ignore this email and no changes
-   ''' 
+If you did not make this request then simply ignore this email and no changes will be effected
+''' 
 
 
 
@@ -203,4 +203,12 @@ def reset_token(token):
         flash("That is an invalid or expired token", 'warning')
         return redirect(url_for('reset_request'))
     form = ResetPasswordForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user.password = hashed.password
+        db.session.commit()
+        flash(f'Your account has been created!, You can now login in', 'success')
+        return redirect(url_for('login'))
+    return render_template('register.html', title='Register', form=form)
+
     return render_template('reset_token.html', title='Reset Password', form=form)
