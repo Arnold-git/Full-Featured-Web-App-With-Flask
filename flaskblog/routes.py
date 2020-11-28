@@ -167,7 +167,7 @@ def user_posts(username):
 
 
 def send_reset_email(user):
-    token = user.get_reset_token
+    token = user.get_reset_token()
     msg = Message('Password Reset Request', 
                    sender='noreply@demo.com',
                    recipients=[user.email])
@@ -176,6 +176,7 @@ def send_reset_email(user):
 
 If you did not make this request then simply ignore this email and no changes will be effected
 ''' 
+    mail.send(msg)
 
 
 
