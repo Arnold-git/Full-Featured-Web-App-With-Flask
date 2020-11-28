@@ -171,7 +171,7 @@ def send_reset_email(user):
     msg = Message('Password Reset Request', 
                    sender='noreply@demo.com',
                    recipients=[user.email])
-   msg.body = f'''To reset your password, visit the following link:
+    msg.body = f'''To reset your password, visit the following link:
 {url_for('reset_token', token=token, _external=True)}
 
 If you did not make this request then simply ignore this email and no changes will be effected
@@ -214,5 +214,3 @@ def reset_token(token):
     return render_template('reset_token.html', title='Reset Password', form=form)
 
 
-def  some_random_check():
-    pass
